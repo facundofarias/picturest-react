@@ -21,7 +21,7 @@ const PinsList = () => {
 
   return (
     <div>
-      <span className="pinsList__title">Pins</span>
+      <span className="pinsList__title">Pins TEST 08/03!</span>
       <input
         name="title"
         onChange={(event) => {
