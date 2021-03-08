@@ -35,7 +35,8 @@ jobs:
 
   PublishToNetlify:
 
-    #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # TODO: Uncomment when done
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     if: github.event_name == 'push' && github.ref == 'refs/heads/deployment'
     runs-on: ubuntu-latest
 
