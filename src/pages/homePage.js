@@ -1,7 +1,12 @@
 import PinsList from "../components/pinsList/PinsList";
 
 const HomePage = () => {
-  return <PinsList />;
+  return (
+    <>
+      <div></div>
+      <PinsList />
+    </>
+  );
 };
 
 export default HomePage;
