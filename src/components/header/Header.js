@@ -2,12 +2,10 @@ import "./Header.css";
 import Logo from "../../assets/logo.png";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/userContext/userContext";
 
 const Header = () => {
   const history = useHistory();
-  const { user } = useContext(UserContext);
+  const localStorageUser = JSON.parse(localStorage.getItem('user'));
   return (
     <div className="header__container">
       <div className="header__logo">
@@ -16,10 +14,10 @@ const Header = () => {
         </div>
       </div>
       <div className="header_userInfo__container">
-        {user ? (
+        {localStorageUser ? (
           <img
             onClick={() => history.push("/user")}
-            src={user.avatar}
+            src={localStorageUser?.avatar}
             className="header_userInfo__image"
             alt="User avatar"
           />

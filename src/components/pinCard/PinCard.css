@@ -1,5 +1,5 @@
 .pinCard__container {
-  display: inline-block;
+  display: flex;
   width: 100%;
   margin-bottom: 12px;
 }
@@ -12,7 +12,12 @@
 .pinCard_info__container {
   display: flex;
   margin: 10px;
-  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  background-color: lightgrey;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
 }
 
 .pinCard_info_board__title {

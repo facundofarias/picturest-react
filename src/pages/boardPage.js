@@ -9,7 +9,7 @@ export const BoardPage = () => {
   const [board, setBoard] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/boards/${params.id}`)
+    fetch(`http://localhost:5001/api/boards/${params.id}`)
       .then((response) => response.json())
       .then((json) => setBoard(json))
       .catch(() => {

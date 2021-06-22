@@ -3,42 +3,47 @@ import "./PinsList.css";
 import PinCard from "../pinCard/PinCard";
 
 const PinsList = () => {
+
   const [pins, setPins] = useState([]);
-
-  const [formData, setFormData] = useState({
-    title: undefined,
-    author: undefined,
-    description: undefined,
-  });
-
+  const [refresh, setRefresh] = useState(1);
+  const [pinName, setPinName] = useState();
+  
   useEffect(() => {
-    fetch("http://localhost:5000/api/pins")
+    fetch("http://localhost:5001/api/pins")
       .then((response) => response.json())
-      .then((json) => setPins(json));
-  }, []);
+      .then((json) => setPins(json))
+      .catch((err) => console.log(err));
+  }, [refresh]);
 
-  console.log(formData);
+  const body = {
+    name: pinName,
+  }
+
+  const createPin = () => {
+    fetch("http://localhost:5001/api/pins", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    .then((response) => response.json())
+    .then((json) => setRefresh())
+    .catch((err) => console.log(err));
+  };
 
   return (
     <div>
       <span className="pinsList__title">Pins</span>
-      <input
-        name="title"
-        onChange={(event) => {
-          setFormData({ ...formData, title: event.target.value });
-        }}
-      />
-      <input
-        name="description"
-        onChange={(event) => {
-          setFormData({ ...formData, description: event.target.value });
-        }}
-      />
       <div className="pinsList__container">
         {pins.map((pin) => (
           <PinCard pin={pin} key={pin.id} />
         ))}
       </div>
+      <form>
+        <input onChange={(event) => setPinName(event.target.value)}></input>
+      <button onClick={() => createPin()}>Create</button>
+      </form>
     </div>
   );
 };

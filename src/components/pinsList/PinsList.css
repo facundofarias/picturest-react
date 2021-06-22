@@ -1,7 +1,5 @@
 .pinsList__container {
-  columns: 8 215px;
-  column-gap: 44px;
-  margin: 0 32px;
+  display: flex;
 }
 
 .pinsList__title {

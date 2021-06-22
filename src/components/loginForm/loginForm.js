@@ -23,7 +23,7 @@ export const LoginForm = () => {
             },
             body: JSON.stringify(body)
         }
-        fetch("http://127.0.0.1:5000/login", options)
+        fetch("http://127.0.0.1:5001/login", options)
             .then(response => response.json())
             .then(json => {
                     localStorage.setItem('token', json.token)
